@@ -1,0 +1,44 @@
+/* Panel */
+"Find a session by title, folder, or what you said" = "按标题、文件夹或说过的话找会话";
+"Search all transcripts for “%@”" = "在全部记录里找“%@”";
+"Searching every transcript…" = "正在翻全部记录…";
+"“%@” isn’t in any transcript." = "哪份记录里都没有“%@”。";
+"You" = "你";
+"Tool output" = "工具输出";
+"Untitled" = "未命名";
+"Archived" = "已归档";
+"Forked from “%@”" = "分叉自“%@”";
+"Ran in Terminal" = "在终端里跑的";
+"Copied" = "已复制";
+"Copy ID" = "复制 ID";
+"Search transcripts" = "搜记录";
+"Close" = "关闭";
+"Back" = "返回";
+"Clear" = "清空";
+"Copy Resume Command" = "复制恢复命令";
+"Show Transcript in Finder" = "在访达中显示记录";
+"No Claude Code sessions yet" = "还没有 Claude Code 会话";
+"ccid lists sessions from the Claude app and from ~/.claude/projects." = "ccid 列出 Claude 应用里的会话，以及 ~/.claude/projects 里的记录。";
+
+/* Menu bar */
+"ccid — Claude Code session IDs" = "ccid —— Claude Code 会话 ID";
+"Find a Session…" = "查找会话…";
+"Keyboard Shortcut" = "快捷键";
+"None" = "不用快捷键";
+"Open at Login" = "登录时打开";
+"Install Command Line Tool…" = "安装命令行工具…";
+"About ccid" = "关于 ccid";
+"Quit ccid" = "退出 ccid";
+
+/* Alerts */
+"Couldn’t change the login item" = "没能修改登录项";
+"Use ccid in Terminal" = "在终端里用 ccid";
+"Run this once in Terminal, then type ccid anywhere:" = "在终端里运行一次下面这行，之后在哪都能输 ccid：";
+"Copy Command" = "复制命令";
+"Done" = "完成";
+"Shortcut unavailable" = "快捷键用不了";
+"%@ is already used by another app. Pick another one from the ccid menu." = "%@ 已经被别的应用占用了，从 ccid 菜单里换一个吧。";
+
+/* About */
+"Find any Claude Code session ID in a keystroke." = "一键找到任何 Claude Code 会话的 ID。";
+"An independent project, not affiliated with Anthropic." = "独立项目，与 Anthropic 无关联。";
