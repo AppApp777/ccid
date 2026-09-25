@@ -131,7 +131,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func installCommandLineTool() {
         let tool = Bundle.main.bundleURL.appendingPathComponent("Contents/Helpers/ccid").path
-        let command = "sudo ln -sf \(ShellQuote.quote(tool)) /usr/local/bin/ccid"
+        // /usr/local/bin is on the default PATH but doesn't exist on a fresh Mac.
+        let command = "sudo mkdir -p /usr/local/bin && sudo ln -sf \(ShellQuote.quote(tool)) /usr/local/bin/ccid"
         NSApp.activate()
         let alert = NSAlert()
         alert.messageText = NSLocalizedString("Use ccid in Terminal", comment: "")
