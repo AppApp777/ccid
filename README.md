@@ -13,7 +13,7 @@ Find any Claude Code session ID in a keystroke.
 <img src="https://img.shields.io/badge/download-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="Download size 1.6 MB">
 <a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&labelColor=3A3A40&color=F26A21" alt="MIT license"></a>
 
-<br><br>
+<br>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-dark.webp">
@@ -28,7 +28,7 @@ Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of t
 
 ## Download
 
-**[⬇ Download ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)** (1.6 MB) · macOS 14 or later · Apple silicon and Intel
+**[Download ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)** (1.6 MB) · macOS 14 or later · Apple silicon and Intel
 
 Unzip it, drag **ccid** to Applications, and open it. ccid isn't notarized by Apple, so macOS stops it the first time:
 

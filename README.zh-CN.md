@@ -13,7 +13,7 @@
 <img src="https://img.shields.io/badge/%E5%A4%A7%E5%B0%8F-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="大小 1.6 MB">
 <a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&label=%E8%AE%B8%E5%8F%AF&labelColor=3A3A40&color=F26A21" alt="许可 MIT"></a>
 
-<br><br>
+<br>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-zh-dark.webp">
@@ -28,7 +28,7 @@
 
 ## 下载
 
-**[⬇ 下载 ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)**（1.6 MB）· macOS 14 或更新 · Apple 芯片和 Intel 都能用
+**[下载 ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)**（1.6 MB）· macOS 14 或更新 · Apple 芯片和 Intel 都能用
 
 解压，把 **ccid** 拖进“应用程序”，打开。ccid 没有经过 Apple 公证，所以第一次打开时 macOS 会拦下来：
 
