@@ -1,25 +1,41 @@
-<p align="center">
-  <img src="docs/icon.png" width="112" height="112" alt="">
-</p>
+<div align="center">
 
-<h1 align="center">ccid</h1>
+<img src="docs/icon.png" width="128" height="128" alt="ccid icon">
 
-<p align="center">
-  Find any Claude Code session ID in a keystroke.
-  <br>
-  <a href="README.zh-CN.md">简体中文</a>
-</p>
+# ccid
 
-<br>
+Find any Claude Code session ID in a keystroke.
+
+<p><b>English</b> · <a href="README.zh-CN.md">简体中文</a></p>
+
+<a href="https://github.com/AppApp777/ccid/releases/latest"><img src="https://img.shields.io/github/v/release/AppApp777/ccid?style=for-the-badge&label=release&labelColor=3A3A40&color=F26A21" alt="Latest release"></a>
+<img src="https://img.shields.io/badge/macOS-14%2B-F26A21?style=for-the-badge&labelColor=3A3A40" alt="macOS 14 or later">
+<img src="https://img.shields.io/badge/download-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="Download size 1.6 MB">
+<a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&labelColor=3A3A40&color=F26A21" alt="MIT license"></a>
+
+<br><br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/panel-dark.webp">
-  <img src="docs/panel-light.webp" width="848" alt="The ccid panel: a search field over a list of Claude Code sessions, each with its title, folder, last message and short ID">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/demo-dark.webp">
+  <img src="docs/demo-light.webp" width="848" alt="Over a terminal, Control-Command-I opens the ccid panel. Typing “onboard” narrows the list to two sessions, Return copies the first one’s ID, and the ID is pasted after claude --resume.">
 </picture>
+
+</div>
 
 Every Claude Code conversation has an ID. You need it for `claude --resume`, for scripts, and for pointing one session at another. The Claude app doesn't show it. ccid does.
 
 Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>. The ID is on your clipboard and the panel is gone.
+
+## Download
+
+**[⬇ Download ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)** (1.6 MB) · macOS 14 or later · Apple silicon and Intel
+
+Unzip it, drag **ccid** to Applications, and open it. ccid isn't notarized by Apple, so macOS stops it the first time:
+
+- **macOS 15 and later:** click **Done** on the warning, open **System Settings → Privacy & Security**, and click **Open Anyway** next to the line about ccid. Confirm once more.
+- **macOS 14:** Control-click ccid in Applications, choose **Open**, then click **Open**.
+
+That's needed once. If macOS stops the `ccid` command the first time you run it in Terminal, allow it the same way. Each release includes `SHA256SUMS.txt`; `shasum -a 256 ccid-macos.zip` should print the same checksum.
 
 ## What it does
 
@@ -32,22 +48,8 @@ Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of t
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/transcripts-dark.webp">
-  <img src="docs/transcripts-light.webp" width="848" alt="Searching every transcript for “progress bar”: two sessions match, each showing the line where it was said">
+  <img src="docs/transcripts-light.webp" width="848" alt="Searching every transcript for “progress bar”: two sessions match, each showing the line where it was said and who said it">
 </picture>
-
-## Install
-
-ccid runs on macOS 14 or later, and uses Liquid Glass on macOS 26. There's no signed download yet, so build it from source. It takes about a minute with Xcode 16 or later (Xcode 26 for Liquid Glass):
-
-```bash
-git clone https://github.com/AppApp777/ccid.git
-cd ccid
-scripts/build-app.sh
-cp -R dist/ccid.app /Applications/
-open /Applications/ccid.app
-```
-
-To use `ccid` in a terminal, choose **Install Command Line Tool…** from its menu.
 
 ## Keys
 
@@ -62,6 +64,8 @@ To use `ccid` in a terminal, choose **Install Command Line Tool…** from its me
 Right-click a session to copy a command that resumes it in its folder, or to show its transcript in Finder. Click the menu bar icon to open the panel; right-click it for settings.
 
 ## Command line
+
+Choose **Install Command Line Tool…** from the menu to get `ccid` in Terminal.
 
 ```bash
 ccid                       # recent sessions
@@ -89,16 +93,48 @@ ccid joins the two. Sessions started in a terminal are named by their `/rename` 
 
 **Can I try it without showing my own sessions?** Quit ccid, then open it with made-up ones: `open --env CCID_DEMO=1 /Applications/ccid.app`.
 
-## Development
+**How do I uninstall it?** Turn off **Open at Login** in its menu if you turned it on, quit it, and drag it to the Trash. If you installed the command-line tool, also run `sudo rm /usr/local/bin/ccid`. The only file ccid writes is `~/Library/Preferences/io.github.appapp777.ccid.plist`, and only if you changed the shortcut.
 
-```bash
-swift test               # tests for the core (Sources/CCIDCore)
-swift run ccid           # the command-line tool, from source
-scripts/build-app.sh     # dist/ccid.app; UNIVERSAL=1 for Apple silicon and Intel
-```
+## Feedback
 
-`CCID_CLASSIC=1` shows the pre-macOS 26 look on macOS 26. `scripts/make-icon.sh` redraws the icon.
+Bugs and ideas go in [Issues](https://github.com/AppApp777/ccid/issues).
 
 ## License
 
-[MIT](LICENSE). ccid is an independent project, not affiliated with or endorsed by Anthropic. Claude and Claude Code are trademarks of Anthropic, PBC.
+[MIT](LICENSE): you can use, change, and share the code, commercially too, as long as the copyright notice stays. It comes with no warranty.
+
+ccid is an independent project, not affiliated with or endorsed by Anthropic. Claude and Claude Code are trademarks of Anthropic, PBC.
+
+## About the author
+
+Made by 七也 (Qiye), who is also on Douyin and Xiaohongshu:
+
+| Douyin | Xiaohongshu |
+|:---:|:---:|
+| <img src="docs/qr-douyin.png" width="160" alt="Douyin QR code for 七也"> | <img src="docs/qr-xiaohongshu.png" width="160" alt="Xiaohongshu QR code for 七也"> |
+| 七也 · `miao1162603325` | 七也 · `5441921009` |
+
+## Recent changes
+
+**2026-09-25 · v1.0.0**: the first release. The full list is in [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+<details>
+<summary><b>Build from source</b></summary>
+
+<br>
+
+You need Xcode 16 or later (Xcode 26 for Liquid Glass).
+
+```bash
+git clone https://github.com/AppApp777/ccid.git
+cd ccid
+scripts/build-app.sh     # dist/ccid.app for this Mac; UNIVERSAL=1 for Apple silicon and Intel
+swift test               # tests for the core (Sources/CCIDCore)
+swift run ccid           # the command-line tool, from source
+```
+
+`scripts/package.sh` builds the release zip and its checksum. `CCID_CLASSIC=1` shows the pre-macOS 26 look on macOS 26, and `scripts/make-icon.sh` redraws the icon. [AGENTS.md](AGENTS.md) has the layout and the rules for changes.
+
+</details>

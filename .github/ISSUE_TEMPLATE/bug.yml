@@ -1,0 +1,29 @@
+name: Bug report
+description: Something doesn't work the way the README says.
+labels: ["bug"]
+body:
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "macOS 26.0 (Apple menu → About This Mac)"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ccid version
+      description: Shown in **About ccid** in its menu, or by `ccid --version`.
+      placeholder: "1.0.0"
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: >
+        What you did, what you expected, and what you saw instead. Screenshots help: drag them into this box.
+        Session titles can be private. If the problem also shows with made-up sessions
+        (`open --env CCID_DEMO=1 /Applications/ccid.app`), a screenshot of that keeps yours out of it.
+    validations:
+      required: true

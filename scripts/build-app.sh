@@ -20,7 +20,7 @@ cp Bundle/AppIcon.icns "$app/Contents/Resources/AppIcon.icns"
 cp -R Bundle/en.lproj Bundle/zh-Hans.lproj "$app/Contents/Resources/"
 plutil -lint "$app/Contents/Info.plist" >/dev/null
 
-# Ad-hoc signature: enough to run locally. Releases for other people need a Developer ID.
+# Ad-hoc signature. Downloaded copies need one approval in Privacy & Security, since there is no Developer ID.
 codesign --force --sign - "$app/Contents/Helpers/ccid"
 codesign --force --sign - "$app"
 codesign --verify --deep --strict "$app"

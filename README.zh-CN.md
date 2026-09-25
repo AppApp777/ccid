@@ -1,25 +1,41 @@
-<p align="center">
-  <img src="docs/icon.png" width="112" height="112" alt="">
-</p>
+<div align="center">
 
-<h1 align="center">ccid</h1>
+<img src="docs/icon.png" width="128" height="128" alt="ccid 图标">
 
-<p align="center">
-  一个快捷键，找到任何 Claude Code 会话的 ID。
-  <br>
-  <a href="README.md">English</a>
-</p>
+# ccid
 
-<br>
+一个快捷键，找到任何 Claude Code 会话的 ID。
+
+<p><a href="README.md">English</a> · <b>简体中文</b></p>
+
+<a href="https://github.com/AppApp777/ccid/releases/latest"><img src="https://img.shields.io/github/v/release/AppApp777/ccid?style=for-the-badge&label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC&labelColor=3A3A40&color=F26A21" alt="最新版本"></a>
+<img src="https://img.shields.io/badge/%E7%B3%BB%E7%BB%9F-macOS%2014%2B-F26A21?style=for-the-badge&labelColor=3A3A40" alt="系统 macOS 14 或更新">
+<img src="https://img.shields.io/badge/%E5%A4%A7%E5%B0%8F-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="大小 1.6 MB">
+<a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&label=%E8%AE%B8%E5%8F%AF&labelColor=3A3A40&color=F26A21" alt="许可 MIT"></a>
+
+<br><br>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/panel-zh-dark.webp">
-  <img src="docs/panel-zh-light.webp" width="848" alt="ccid 面板：搜索框下面是 Claude Code 会话列表，每行有标题、文件夹、最后说的话和短 ID">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/demo-zh-dark.webp">
+  <img src="docs/demo-zh-light.webp" width="848" alt="在终端前按 Control-Command-I 打开 ccid 面板，输入拼音 xsyd 找到“新手引导打磨”，回车复制它的 ID，再粘到 claude --resume 后面">
 </picture>
+
+</div>
 
 每个 Claude Code 会话都有一个 ID：`claude --resume` 要用，脚本要用，让一个会话去看另一个会话也要用。Claude 应用里看不到它，ccid 能。
 
 在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车。ID 已经在剪贴板里，面板也收起来了。
+
+## 下载
+
+**[⬇ 下载 ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)**（1.6 MB）· macOS 14 或更新 · Apple 芯片和 Intel 都能用
+
+解压，把 **ccid** 拖进“应用程序”，打开。ccid 没有经过 Apple 公证，所以第一次打开时 macOS 会拦下来：
+
+- **macOS 15 及更新**：在提示框里点“完成”，打开“系统设置 → 隐私与安全性”，在提到 ccid 的那一行旁边点“仍要打开”，再确认一次。
+- **macOS 14**：在“应用程序”里按住 Control 点 ccid，选“打开”，再点“打开”。
+
+只需要这一次。第一次在终端里运行 `ccid` 命令时如果也被拦，照同样的办法放行。每个版本都附有 `SHA256SUMS.txt`，可以用 `shasum -a 256 ccid-macos.zip` 核对下载的文件。
 
 ## 能做什么
 
@@ -31,23 +47,9 @@
 - **只读**：不联网，不统计，不用授权任何权限。
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/pinyin-zh-dark.webp">
-  <img src="docs/pinyin-zh-light.webp" width="848" alt="输入拼音首字母 xs，找到“新手引导打磨”等会话">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/transcripts-zh-dark.webp">
+  <img src="docs/transcripts-zh-light.webp" width="848" alt="在全部记录里找“进度条”：两个会话里有这句话，各自显示原句和是谁说的">
 </picture>
-
-## 安装
-
-需要 macOS 14 或更新版本，在 macOS 26 上是液态玻璃外观。目前还没有签名的安装包，要从源码构建。装有 Xcode 16 或更新版本的话（液态玻璃要 Xcode 26），大约一分钟：
-
-```bash
-git clone https://github.com/AppApp777/ccid.git
-cd ccid
-scripts/build-app.sh
-cp -R dist/ccid.app /Applications/
-open /Applications/ccid.app
-```
-
-想在终端里用 `ccid`，在它的菜单里选“安装命令行工具…”。
 
 ## 按键
 
@@ -62,6 +64,8 @@ open /Applications/ccid.app
 右键某个会话，可以复制“回到它所在文件夹并恢复”的命令，或在访达里显示它的记录文件。点菜单栏图标打开面板，右键图标是设置。
 
 ## 命令行
+
+在菜单里选“安装命令行工具…”，终端里就能用 `ccid`。
 
 ```bash
 ccid                       # 最近的会话
@@ -89,16 +93,48 @@ ccid 把两边对上。在终端里开的会话，用 `/rename` 起的名字或�
 
 **想试用又不想露出自己的会话？** 先退出 ccid，再用演示数据打开：`open --env CCID_DEMO=1 /Applications/ccid.app`。
 
-## 开发
+**怎么卸载？** 如果在菜单里开过“登录时打开”，先关掉；退出 ccid，把它拖进废纸篓。装过命令行工具的话，再运行 `sudo rm /usr/local/bin/ccid`。ccid 唯一会写的文件是 `~/Library/Preferences/io.github.appapp777.ccid.plist`，而且只在你改过快捷键时才有。
 
-```bash
-swift test               # 核心逻辑的测试（Sources/CCIDCore）
-swift run ccid           # 从源码跑命令行工具
-scripts/build-app.sh     # 生成 dist/ccid.app；UNIVERSAL=1 同时构建 Apple 芯片和 Intel 版
-```
+## 问题反馈
 
-`CCID_CLASSIC=1` 可以在 macOS 26 上看旧系统的外观。`scripts/make-icon.sh` 重画图标。
+用着有问题或者有建议，开一个 [Issue](https://github.com/AppApp777/ccid/issues) 就行。
 
 ## 许可
 
-[MIT](LICENSE)。ccid 是独立项目，与 Anthropic 无关联，也未获其背书。Claude 和 Claude Code 是 Anthropic, PBC 的商标。
+[MIT](LICENSE)：可以使用、修改、再分发，商用也可以，保留版权声明就行；作者不对使用后果负责。
+
+ccid 是独立项目，与 Anthropic 无关联，也未获其背书。Claude 和 Claude Code 是 Anthropic, PBC 的商标。
+
+## 关于作者
+
+七也。日常发在这两个地方：
+
+| 抖音 | 小红书 |
+|:---:|:---:|
+| <img src="docs/qr-douyin.png" width="160" alt="抖音 七也"> | <img src="docs/qr-xiaohongshu.png" width="160" alt="小红书 七也"> |
+| 七也 · `miao1162603325` | 七也 · `5441921009` |
+
+## 最近更新
+
+**2026-09-25 · v1.0.0**：第一版。完整记录在 [CHANGELOG.md](CHANGELOG.md)。
+
+---
+
+<details>
+<summary><b>给开发者的：从源码构建</b></summary>
+
+<br>
+
+需要 Xcode 16 或更新版本（液态玻璃要 Xcode 26）。
+
+```bash
+git clone https://github.com/AppApp777/ccid.git
+cd ccid
+scripts/build-app.sh     # 生成 dist/ccid.app；UNIVERSAL=1 同时构建 Apple 芯片和 Intel 版
+swift test               # 核心逻辑的测试（Sources/CCIDCore）
+swift run ccid           # 从源码跑命令行工具
+```
+
+`scripts/package.sh` 打出发布用的压缩包和校验和。`CCID_CLASSIC=1` 可以在 macOS 26 上看旧系统的外观，`scripts/make-icon.sh` 重画图标。[AGENTS.md](AGENTS.md) 写了代码结构和改动规矩。
+
+</details>
