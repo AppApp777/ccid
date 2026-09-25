@@ -17,12 +17,12 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-zh-dark.webp">
-  <img src="docs/demo-zh-light.webp" width="848" alt="在终端前按 Control-Command-I 打开 ccid 面板，输入拼音 xsyd 找到“新手引导打磨”，回车复制它的 ID，再粘到 claude --resume 后面">
+  <img src="docs/demo-zh-light.webp" width="848" alt="在终端前按 Control-Command-I 打开 ccid 面板，输入拼音 xsyd 找到“新手引导打磨”，回车复制它的 ID，再粘进让 Codex 续上这个会话的命令">
 </picture>
 
 </div>
 
-每个 Claude Code 会话都有一个 ID：`claude --resume` 要用，脚本要用，让一个会话去看另一个会话也要用。Claude 应用里看不到它，ccid 能。
+每个 Claude Code 会话都有一个 ID。把它交给 Codex 或别的 agent，对方就能读到整段对话，从 Claude 停下的地方接着做；`claude --resume` 和脚本用的也是它。Claude 应用里看不到这个 ID，ccid 能。
 
 在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车。ID 已经在剪贴板里，面板也收起来了。
 
@@ -43,7 +43,7 @@
 - **翻遍全部记录**：<kbd>⌘</kbd><kbd>↩</kbd> 在所有会话里找一句原话，还告诉你是你说的还是 Claude 说的。
 - **应用和终端都认**：Claude 应用、终端里的 `claude`、编辑器里开的会话都在。分叉的会话有标记，归档的不占地方。
 - **不打扰**：住在菜单栏，不抢你当前应用的焦点，复制完直接粘贴。
-- **带命令行工具**，写脚本用：`claude --resume "$(ccid -1 登录)"`。
+- **带命令行工具**，写脚本用：`codex "续上这个 Claude Code 会话：$(ccid -1 登录)"`。
 - **只读**：不联网，不统计，不用授权任何权限。
 
 <picture>
@@ -86,6 +86,8 @@ Claude 应用给每个会话存一个小文件，在 `~/Library/Application Supp
 ccid 把两边对上。在终端里开的会话，用 `/rename` 起的名字或第一句话当标题。“最近活动”取应用记录的时间和记录文件修改时间里较新的那个。记录文件从末尾一点点往前读，再长也快。
 
 ## 常见问题
+
+**别的 agent 怎么接着做？** 把 ID 交给它，说明这是 Claude Code 的会话，比如 `codex "续上这个 Claude Code 会话：<ID>"`。整段对话存在 `~/.claude/projects/<文件夹>/<ID>.jsonl`，能跑命令的 agent 凭 ID 就能找到；没找到的话，把这个位置告诉它。
 
 **会话的 ID 怎么变了？** 分叉会生成一个新会话，ID 也是新的。ccid 用 ⑂ 标出分叉，鼠标停在上面能看到它从哪来。
 

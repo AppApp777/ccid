@@ -17,12 +17,12 @@ Find any Claude Code session ID in a keystroke.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-dark.webp">
-  <img src="docs/demo-light.webp" width="848" alt="Over a terminal, Control-Command-I opens the ccid panel. Typing “onboard” narrows the list to two sessions, Return copies the first one’s ID, and the ID is pasted after claude --resume.">
+  <img src="docs/demo-light.webp" width="848" alt="Over a terminal, Control-Command-I opens the ccid panel. Typing “onboard” narrows the list to two sessions, Return copies the first one’s ID, and the ID is pasted into a command that asks Codex to continue that session.">
 </picture>
 
 </div>
 
-Every Claude Code conversation has an ID. You need it for `claude --resume`, for scripts, and for pointing one session at another. The Claude app doesn't show it. ccid does.
+Every Claude Code conversation has an ID. Hand it to Codex or any other agent and it can read the conversation and pick up where Claude left off. `claude --resume` and your scripts take the same ID. The Claude app doesn't show it. ccid does.
 
 Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>. The ID is on your clipboard and the panel is gone.
 
@@ -43,7 +43,7 @@ That's needed once. If macOS stops the `ccid` command the first time you run it 
 - **Searches every transcript.** <kbd>⌘</kbd><kbd>↩</kbd> looks for an exact phrase in every conversation and shows who said it, you or Claude.
 - **Knows the Claude app and the terminal.** Sessions from the desktop app, `claude` in a terminal, and editors all show up. Forks are marked, and archived sessions are kept out of the way.
 - **Stays out of the way.** It lives in the menu bar and never takes focus from the app you were in, so you can paste straight away.
-- **Comes with a command-line tool** for scripts: `claude --resume "$(ccid -1 auth)"`.
+- **Comes with a command-line tool** for scripts: `codex "Continue Claude Code session $(ccid -1 auth)"`.
 - **Only reads.** No network, no analytics, no permissions to grant.
 
 <picture>
@@ -86,6 +86,8 @@ The Claude app keeps a small file for each session in `~/Library/Application Sup
 ccid joins the two. Sessions started in a terminal are named by their `/rename` title or first message. "Last active" is whichever is newer: the app's own timestamp or the transcript's. Transcripts are read from the end, a little at a time, so even very long ones are quick.
 
 ## Questions
+
+**How does another agent pick up a session?** Give it the ID and say it's a Claude Code session, as in `codex "Continue Claude Code session <ID>"`. The whole conversation is in `~/.claude/projects/<folder>/<ID>.jsonl`. An agent that can run commands can find it from the ID alone; if one doesn't, point it to that folder.
 
 **Why did my session get a new ID?** Forking creates a new session with its own ID. ccid marks forks with ⑂, and hovering the mark shows where it came from.
 
