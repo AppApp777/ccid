@@ -92,8 +92,10 @@ struct Pinyin: Hashable, Sendable {
     }
 
     /// 65 when the token spells the title from its first character, 55 from a later one.
+    /// A single letter only counts at the start, so the first keystroke narrows without matching everything.
     func score(_ token: String) -> Int? {
-        guard token.count >= 2, token.allSatisfy({ $0.isASCII && $0.isLetter }) else { return nil }
+        guard !token.isEmpty, token.allSatisfy({ $0.isASCII && $0.isLetter }) else { return nil }
+        if token.count == 1 { return spells(token, from: 0) ? 65 : nil }
         for start in units.indices where spells(token, from: start) {
             return start == 0 ? 65 : 55
         }

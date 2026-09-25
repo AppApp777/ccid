@@ -40,6 +40,7 @@ import Testing
         #expect(titles("tanchuang") == ["修一下第三行的弹窗"])
         #expect(titles("dsh") == ["修一下第三行的弹窗"])
         #expect(titles("ou").isEmpty, "matches start at a character, never mid-syllable")
+        #expect(titles("x") == ["修一下第三行的弹窗"], "one letter only matches the first character, not 选")
     }
 
     @Test func archivedSessionsSinkAndOldPromptsStillCount() {
