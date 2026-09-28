@@ -114,5 +114,6 @@ import Testing
         let nowhere = Session(id: "1234abcd", title: "", project: "", lastActive: Date())
         #expect(nowhere.resumeCommand == "claude --resume 1234abcd")
         #expect(plain.shortID == "1234abcd")
+        #expect(plain.claudeDeepLink == "claude://threads/1234abcd")
     }
 }

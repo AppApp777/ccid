@@ -162,7 +162,7 @@ final class PanelModel {
 
     func activate(_ row: Row) {
         switch row {
-        case .session(let session): copy(session.id, for: session)
+        case .session(let session): copy(session.claudeDeepLink, for: session)
         case .searchTranscripts(let phrase): searchTranscripts(phrase)
         case .note: break
         }

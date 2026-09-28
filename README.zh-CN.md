@@ -10,7 +10,7 @@
 
 <a href="https://github.com/AppApp777/ccid/releases/latest"><img src="https://img.shields.io/github/v/release/AppApp777/ccid?style=for-the-badge&label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC&labelColor=3A3A40&color=F26A21" alt="最新版本"></a>
 <img src="https://img.shields.io/badge/%E7%B3%BB%E7%BB%9F-macOS%2014%2B-F26A21?style=for-the-badge&labelColor=3A3A40" alt="系统 macOS 14 或更新">
-<img src="https://img.shields.io/badge/%E5%A4%A7%E5%B0%8F-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="大小 1.6 MB">
+<img src="https://img.shields.io/badge/%E5%A4%A7%E5%B0%8F-1.5%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="大小 1.5 MB">
 <a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&label=%E8%AE%B8%E5%8F%AF&labelColor=3A3A40&color=F26A21" alt="许可 MIT"></a>
 
 <br>
@@ -24,11 +24,11 @@
 
 每个 Claude Code 会话都有一个 ID。把它交给 Codex 或别的 agent，对方就能读到整段对话，从 Claude 停下的地方接着做；`claude --resume` 和脚本用的也是它。Claude 应用里看不到这个 ID，ccid 能。
 
-在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车。ID 已经在剪贴板里，面板也收起来了。
+在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车。剪贴板里会得到 `claude://threads/<会话 ID>`，面板也收起来了。需要裸 ID 时，右键会话选“复制 ID”。
 
 ## 下载
 
-**[下载 ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)**（1.6 MB）· macOS 14 或更新 · Apple 芯片和 Intel 都能用
+**[下载 ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)**（1.5 MB）· macOS 14 或更新 · Apple 芯片和 Intel 都能用
 
 解压，把 **ccid** 拖进“应用程序”，打开。ccid 没有经过 Apple 公证，所以第一次打开时 macOS 会拦下来：
 
@@ -72,7 +72,7 @@ ccid                       # 最近的会话
 ccid 登录                  # 按标题、文件夹、拼音或说过的话筛
 ccid -g "进度条"           # 记录里说过这句话的会话
 ccid -1 登录               # 只要最匹配那个的 ID
-ccid -c 登录               # 直接复制
+ccid -c 登录               # 复制 claude://threads/<ID>
 eval "$(ccid -r 登录)"     # 进到它的文件夹并恢复会话
 ccid --json                # 同样的列表，JSON 格式
 ```
@@ -118,7 +118,7 @@ ccid 是独立项目，与 Anthropic 无关联，也未获其背书。Claude 和
 
 ## 最近更新
 
-**2026-09-25 · v1.0.0**：第一版。完整记录在 [CHANGELOG.md](CHANGELOG.md)。
+**2026-09-28 · v1.0.1**：默认复制改为 `claude://threads/<会话 ID>`，同时保留裸 ID。完整记录在 [CHANGELOG.md](CHANGELOG.md)。
 
 ---
 

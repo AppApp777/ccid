@@ -137,6 +137,7 @@ private struct RowView: View {
                 session: session, selected: selected, copied: model.copiedID == session.id,
                 hit: model.hits[session.id], phrase: phrase, now: model.now)
                 .contextMenu {
+                    Button("Copy Claude Link") { model.copy(session.claudeDeepLink, for: session) }
                     Button("Copy ID") { model.copy(session.id, for: session) }
                     Button("Copy Resume Command") { model.copy(session.resumeCommand, for: session) }
                     Divider()

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 · 2026-09-28
+
+- Pressing Return now copies Claude sessions as `claude://threads/<session-id>`, so the source is explicit when the link is handed to Codex or another agent.
+- `ccid -c` copies the same Claude deep-link form; `ccid -1` still prints the raw session ID for scripts.
+- The context menu keeps separate actions for copying the Claude link, the raw ID, or the `claude --resume` command.
+
 ## 1.0.0 · 2026-09-25
 
 The first release.

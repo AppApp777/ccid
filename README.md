@@ -10,7 +10,7 @@ Find any Claude Code session ID in a keystroke.
 
 <a href="https://github.com/AppApp777/ccid/releases/latest"><img src="https://img.shields.io/github/v/release/AppApp777/ccid?style=for-the-badge&label=release&labelColor=3A3A40&color=F26A21" alt="Latest release"></a>
 <img src="https://img.shields.io/badge/macOS-14%2B-F26A21?style=for-the-badge&labelColor=3A3A40" alt="macOS 14 or later">
-<img src="https://img.shields.io/badge/download-1.6%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="Download size 1.6 MB">
+<img src="https://img.shields.io/badge/download-1.5%20MB-F26A21?style=for-the-badge&labelColor=3A3A40" alt="Download size 1.5 MB">
 <a href="LICENSE"><img src="https://img.shields.io/github/license/AppApp777/ccid?style=for-the-badge&labelColor=3A3A40&color=F26A21" alt="MIT license"></a>
 
 <br>
@@ -24,11 +24,11 @@ Find any Claude Code session ID in a keystroke.
 
 Every Claude Code conversation has an ID. Hand it to Codex or any other agent and it can read the conversation and pick up where Claude left off. `claude --resume` and your scripts take the same ID. The Claude app doesn't show it. ccid does.
 
-Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>. The ID is on your clipboard and the panel is gone.
+Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>. Your clipboard gets `claude://threads/<session ID>` and the panel is gone. Right-click a session and choose “Copy ID” when you need the raw ID.
 
 ## Download
 
-**[Download ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)** (1.6 MB) · macOS 14 or later · Apple silicon and Intel
+**[Download ccid-macos.zip](https://github.com/AppApp777/ccid/releases/latest/download/ccid-macos.zip)** (1.5 MB) · macOS 14 or later · Apple silicon and Intel
 
 Unzip it, drag **ccid** to Applications, and open it. ccid isn't notarized by Apple, so macOS stops it the first time:
 
@@ -72,7 +72,7 @@ ccid                       # recent sessions
 ccid auth                  # filter by title, folder, pinyin, or what you said
 ccid -g "progress bar"     # sessions whose transcript contains a phrase
 ccid -1 auth               # just the best match's ID
-ccid -c auth               # copy it
+ccid -c auth               # copy claude://threads/<ID>
 eval "$(ccid -r auth)"     # cd to its folder and resume it
 ccid --json                # the same list as JSON
 ```
@@ -118,7 +118,7 @@ Made by 七也 (Qiye), who is also on Douyin and Xiaohongshu:
 
 ## Recent changes
 
-**2026-09-25 · v1.0.0**: the first release. The full list is in [CHANGELOG.md](CHANGELOG.md).
+**2026-09-28 · v1.0.1**: copied sessions now identify themselves as `claude://threads/<session ID>`, while raw IDs remain available. The full list is in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

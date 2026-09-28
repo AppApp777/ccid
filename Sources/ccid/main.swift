@@ -15,7 +15,7 @@ let help = text("""
 
     Options
       -1, --id              print only the best match's ID (for scripts)
-      -c, --copy            copy the best match's ID to the clipboard
+      -c, --copy            copy claude://threads/<ID> for the best match
       -r, --resume          print a command that reopens it: cd … && claude --resume …
       -l, --long            add a line with the last thing you said
       -a, --all             include archived sessions in the list
@@ -33,7 +33,7 @@ let help = text("""
 
     选项
       -1, --id              只输出最匹配那个的 ID（给脚本用）
-      -c, --copy            复制最匹配那个的 ID
+      -c, --copy            复制最匹配会话的 claude://threads/<ID>
       -r, --resume          输出回到那个会话的命令：cd … && claude --resume …
       -l, --long            每个会话多一行：最后说的话
       -a, --all             列表里也显示已归档的
@@ -240,9 +240,9 @@ if options.idOnly {
 } else if options.resume {
     print(best.resumeCommand)
 } else if options.copy {
-    guard copyToClipboard(best.id) else { fail(text("ccid: couldn't reach the clipboard", "ccid：剪贴板用不了"), code: 1) }
+    guard copyToClipboard(best.claudeDeepLink) else { fail(text("ccid: couldn't reach the clipboard", "ccid：剪贴板用不了"), code: 1) }
     let title = best.title.isEmpty ? text("(untitled)", "（无标题）") : best.title
-    FileHandle.standardError.write(Data((text("Copied ", "已复制 ") + bold(best.id) + dim("  " + title) + "\n").utf8))
+    FileHandle.standardError.write(Data((text("Copied ", "已复制 ") + bold(best.claudeDeepLink) + dim("  " + title) + "\n").utf8))
 } else if options.json {
     printJSON(Array(results.prefix(options.limit)), hits: hits)
 } else {

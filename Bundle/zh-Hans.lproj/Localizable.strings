@@ -10,6 +10,7 @@
 "Forked from “%@”" = "分叉自“%@”";
 "Ran in Terminal" = "在终端里跑的";
 "Copied" = "已复制";
+"Copy Claude Link" = "复制 Claude 链接";
 "Copy ID" = "复制 ID";
 "Search transcripts" = "搜记录";
 "Close" = "关闭";

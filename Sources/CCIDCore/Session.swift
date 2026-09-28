@@ -44,6 +44,8 @@ public struct Session: Identifiable, Hashable, Sendable {
 
     public var shortID: String { String(id.prefix(8)) }
     public var isFork: Bool { parentTitle != nil }
+    /// The value ccid copies by default when handing a Claude session to Codex.
+    public var claudeDeepLink: String { "claude://threads/\(id)" }
 
     /// A command that reopens this session in the terminal, from the folder it ran in.
     public var resumeCommand: String {
