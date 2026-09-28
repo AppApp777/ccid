@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'release: v')
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Read version
+        id: version
+        run: |
+          version="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' Bundle/Info.plist)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        run: swift test
+
+      - name: Build release package
+        run: scripts/package.sh
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          tag="v${VERSION}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; nothing to do."
+            exit 0
+          fi
+
+          notes="$RUNNER_TEMP/release-notes.md"
+          cat > "$notes" <<EOF_NOTES
+          ## Download
+
+          **ccid-macos.zip** · macOS 14 or later · Apple silicon and Intel
+
+          Unzip it, drag **ccid** to Applications, and open it. `SHA256SUMS.txt` contains the checksum for the download.
+
+          ## In this release
+
+          EOF_NOTES
+          awk -v version="$VERSION" '
+            $0 ~ "^## " version " " { found=1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md >> "$notes"
+
+          cat >> "$notes" <<'EOF_NOTES'
+
+          ## 中文
+
+          下载 `ccid-macos.zip`，解压后把 ccid 拖进“应用程序”。第一次打开被 macOS 拦下时，按 README 里的系统版本说明放行。完整用法见仓库里的中文说明。
+          EOF_NOTES
+
+          gh release create "$tag" \
+            dist/ccid-macos.zip dist/SHA256SUMS.txt \
+            --target "$GITHUB_SHA" \
+            --title "ccid ${VERSION}" \
+            --notes-file "$notes"
