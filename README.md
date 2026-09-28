@@ -4,7 +4,7 @@
 
 # ccid
 
-Find any Claude Code session ID in a keystroke.
+Find any Claude Code session and hand it to another AI agent in one keystroke.
 
 <p><b>English</b> · <a href="README.zh-CN.md">简体中文</a></p>
 
@@ -22,9 +22,9 @@ Find any Claude Code session ID in a keystroke.
 
 </div>
 
-Every Claude Code conversation has an ID. Hand it to Codex or any other agent and it can read the conversation and pick up where Claude left off. `claude --resume` and your scripts take the same ID. The Claude app doesn't show it. ccid does.
+Claude Code doesn't give you a convenient way to copy a session ID. ccid finds old or current sessions by title, folder, pinyin, or transcript, then copies `claude://threads/<session ID>`. The link carries its source with it, so Codex or another agent doesn't have to guess what a bare UUID belongs to before continuing the conversation.
 
-Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>. Your clipboard gets `claude://threads/<session ID>` and the panel is gone. Right-click a session and choose “Copy ID” when you need the raw ID.
+Press <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> anywhere, type a few letters of the title, press <kbd>↩</kbd>, then paste the result into another agent. Right-click a session and choose “Copy ID” when you need the raw ID for `claude --resume` or a script.
 
 ## Download
 
@@ -57,7 +57,7 @@ That's needed once. If macOS stops the `ccid` command the first time you run it 
 |---|---|
 | <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> | Open or close the panel (change it in the menu) |
 | <kbd>↑</kbd> <kbd>↓</kbd> | Move through sessions (<kbd>⌃</kbd><kbd>N</kbd> <kbd>⌃</kbd><kbd>P</kbd> work too) |
-| <kbd>↩</kbd> | Copy the ID and close |
+| <kbd>↩</kbd> | Copy the Claude link and close |
 | <kbd>⌘</kbd><kbd>↩</kbd> | Search every transcript for what you typed |
 | <kbd>esc</kbd> | Go back a step: transcript results, then your search, then the panel |
 
@@ -87,7 +87,7 @@ ccid joins the two. Sessions started in a terminal are named by their `/rename` 
 
 ## Questions
 
-**How does another agent pick up a session?** Give it the ID and say it's a Claude Code session, as in `codex "Continue Claude Code session <ID>"`. The whole conversation is in `~/.claude/projects/<folder>/<ID>.jsonl`. An agent that can run commands can find it from the ID alone; if one doesn't, point it to that folder.
+**How does another agent pick up a session?** Paste the `claude://threads/<ID>` link and ask it to continue. The whole conversation is in `~/.claude/projects/<folder>/<ID>.jsonl`. An agent that can inspect local files can find it from the ID; if one doesn't, point it to that folder.
 
 **Why did my session get a new ID?** Forking creates a new session with its own ID. ccid marks forks with ⑂, and hovering the mark shows where it came from.
 
