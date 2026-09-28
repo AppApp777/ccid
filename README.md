@@ -17,7 +17,7 @@ Find any Claude Code session and hand it to another AI agent in one keystroke.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-dark.webp">
-  <img src="docs/demo-light.webp" width="848" alt="Over a terminal, Control-Command-I opens the ccid panel. Typing “onboard” narrows the list to two sessions, Return copies the first one’s ID, and the ID is pasted into a command that asks Codex to continue that session.">
+  <img src="docs/demo-light.webp" width="848" alt="Over a terminal, Control-Command-I opens the ccid panel. Typing “onboard” narrows the list to two sessions, Return selects the first one, and its session ID is pasted into a command that asks Codex to continue that session.">
 </picture>
 
 </div>
@@ -118,7 +118,7 @@ Made by 七也 (Qiye), who is also on Douyin and Xiaohongshu:
 
 ## Recent changes
 
-**2026-09-28 · v1.0.1**: copied sessions now identify themselves as `claude://threads/<session ID>`, while raw IDs remain available. The full list is in [CHANGELOG.md](CHANGELOG.md).
+**2026-09-28 · v1.0.2**: the panel now labels Return as “Copy Claude Link,” and the project page leads with handing Claude work to another AI agent. The full list is in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

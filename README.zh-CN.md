@@ -4,7 +4,7 @@
 
 # ccid
 
-一个快捷键，找到任何 Claude Code 会话的 ID。
+一个快捷键找到任意 Claude Code 会话，交给另一个 AI Agent 接着做。
 
 <p><a href="README.md">English</a> · <b>简体中文</b></p>
 
@@ -17,14 +17,14 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/demo-zh-dark.webp">
-  <img src="docs/demo-zh-light.webp" width="848" alt="在终端前按 Control-Command-I 打开 ccid 面板，输入拼音 xsyd 找到“新手引导打磨”，回车复制它的 ID，再粘进让 Codex 续上这个会话的命令">
+  <img src="docs/demo-zh-light.webp" width="848" alt="在终端前按 Control-Command-I 打开 ccid 面板，输入拼音 xsyd 找到“新手引导打磨”，回车选中会话，再把会话 ID 粘进让 Codex 续上这个会话的命令">
 </picture>
 
 </div>
 
-每个 Claude Code 会话都有一个 ID。把它交给 Codex 或别的 agent，对方就能读到整段对话，从 Claude 停下的地方接着做；`claude --resume` 和脚本用的也是它。Claude 应用里看不到这个 ID，ccid 能。
+Claude Code 没有一个方便的“复制会话 ID”入口。ccid 可以按标题、文件夹、拼音或对话原文找到当前或以前的会话，然后复制 `claude://threads/<会话 ID>`。链接本身带着来源，交给 Codex 或其他 Agent 时，不会再只剩一串没有语义的 UUID 让对方猜它属于谁。
 
-在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车。剪贴板里会得到 `claude://threads/<会话 ID>`，面板也收起来了。需要裸 ID 时，右键会话选“复制 ID”。
+在任何地方按 <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd>，敲几个标题里的字，回车，然后把结果直接粘给另一个 Agent。需要给 `claude --resume` 或脚本用裸 ID 时，右键会话选“复制 ID”。
 
 ## 下载
 
@@ -57,7 +57,7 @@
 |---|---|
 | <kbd>⌃</kbd><kbd>⌘</kbd><kbd>I</kbd> | 打开或关闭面板（可在菜单里换） |
 | <kbd>↑</kbd> <kbd>↓</kbd> | 上下选（<kbd>⌃</kbd><kbd>N</kbd> <kbd>⌃</kbd><kbd>P</kbd> 也行） |
-| <kbd>↩</kbd> | 复制 ID 并关闭 |
+| <kbd>↩</kbd> | 复制 Claude 链接并关闭 |
 | <kbd>⌘</kbd><kbd>↩</kbd> | 在全部记录里找你输入的话 |
 | <kbd>esc</kbd> | 退一步：先退出全文结果，再清空输入，最后关闭面板 |
 
@@ -87,7 +87,7 @@ ccid 把两边对上。在终端里开的会话，用 `/rename` 起的名字或�
 
 ## 常见问题
 
-**别的 agent 怎么接着做？** 把 ID 交给它，说明这是 Claude Code 的会话，比如 `codex "续上这个 Claude Code 会话：<ID>"`。整段对话存在 `~/.claude/projects/<文件夹>/<ID>.jsonl`，能跑命令的 agent 凭 ID 就能找到；没找到的话，把这个位置告诉它。
+**别的 Agent 怎么接着做？** 把 `claude://threads/<ID>` 链接粘给它，让它继续这个会话。整段对话存在 `~/.claude/projects/<文件夹>/<ID>.jsonl`；能读取本机文件的 Agent 可以据此找到记录，没找到的话，把这个位置告诉它。
 
 **会话的 ID 怎么变了？** 分叉会生成一个新会话，ID 也是新的。ccid 用 ⑂ 标出分叉，鼠标停在上面能看到它从哪来。
 
@@ -118,7 +118,7 @@ ccid 是独立项目，与 Anthropic 无关联，也未获其背书。Claude 和
 
 ## 最近更新
 
-**2026-09-28 · v1.0.1**：默认复制改为 `claude://threads/<会话 ID>`，同时保留裸 ID。完整记录在 [CHANGELOG.md](CHANGELOG.md)。
+**2026-09-28 · v1.0.2**：面板现在把回车动作明确写成“复制 Claude 链接”，项目首页也把“把 Claude 的工作交给另一个 AI Agent 接着做”放到第一层。完整记录在 [CHANGELOG.md](CHANGELOG.md)。
 
 ---
 

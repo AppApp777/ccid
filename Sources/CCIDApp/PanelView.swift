@@ -339,7 +339,7 @@ private struct Footer: View {
     /// What Return does to the selected row.
     private var action: LocalizedStringKey? {
         switch model.selectedRow {
-        case .session?: "Copy ID"
+        case .session?: "Copy Claude Link"
         case .searchTranscripts?: "Search transcripts"
         case .note?, nil: nil
         }

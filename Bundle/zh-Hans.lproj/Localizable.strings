@@ -41,5 +41,5 @@
 "%@ is already used by another app. Pick another one from the ccid menu." = "%@ 已经被别的应用占用了，从 ccid 菜单里换一个吧。";
 
 /* About */
-"Find any Claude Code session ID in a keystroke." = "一键找到任何 Claude Code 会话的 ID。";
+"Find any Claude Code session and hand it to another AI agent in one keystroke." = "一个快捷键找到任意 Claude Code 会话，交给另一个 AI Agent 接着做。";
 "An independent project, not affiliated with Anthropic." = "独立项目，与 Anthropic 无关联。";

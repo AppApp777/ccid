@@ -150,7 +150,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         let credits = NSAttributedString(
-            string: NSLocalizedString("Find any Claude Code session ID in a keystroke.", comment: "") + "\n"
+            string: NSLocalizedString("Find any Claude Code session and hand it to another AI agent in one keystroke.", comment: "") + "\n"
                 + NSLocalizedString("An independent project, not affiliated with Anthropic.", comment: ""),
             attributes: [
                 .font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize),

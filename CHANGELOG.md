@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 · 2026-09-28
+
+- The panel now labels Return correctly as “Copy Claude Link,” matching the `claude://threads/<session-id>` value it copies.
+- The About panel and README hero now lead with the handoff use case: find a Claude Code session and give it to another AI agent to continue.
+
 ## 1.0.1 · 2026-09-28
 
 - Pressing Return now copies Claude sessions as `claude://threads/<session-id>`, so the source is explicit when the link is handed to Codex or another agent.
